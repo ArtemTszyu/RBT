@@ -223,12 +223,14 @@ public:
         print(stream, level + 1, node->left);
     }
 	
-    void del(node_t* node)
+   static void del(node_t* node)
     {
         if (node != nullptr)
         {
-            del(node->left);
-            del(node->right);
+            if (node->left)
+                del(node->left);
+            if (node->right)
+                del(node->right);
             delete node;
         }
     }
